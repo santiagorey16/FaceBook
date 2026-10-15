@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.santiagorey.facebook.ui.screens.FacebookLoginScreen
 import com.santiagorey.facebook.ui.screens.FacebookRegisterScreen
 import com.santiagorey.facebook.ui.screens.FeedScreen
+import com.santiagorey.facebook.ui.screens.RecoverPasswordScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,13 +25,18 @@ class MainActivity : ComponentActivity() {
                 startDestination = "login",
                 modifier = Modifier.fillMaxSize()
             ) {
-                composable(route = "login"){
-                    FacebookLoginScreen(onClickRegister = {
-                        myNavController.navigate("register")
-                    },
+                composable(route = "login") {
+                    FacebookLoginScreen(
+                        onClickRegister = {
+                            myNavController.navigate("register")
+                        },
                         onClickIniciarSesion = {
                             myNavController.navigate("feed")
-                        })
+                        },
+                        onClickRecoverPassword = {
+                            myNavController.navigate("recover")
+                        }
+                    )
                 }
                 composable(route = "register") {
                     FacebookRegisterScreen(onClicBack = {
@@ -38,14 +44,19 @@ class MainActivity : ComponentActivity() {
                     }
                     )
                 }
-                composable("feed"){
+                composable("feed") {
                     FeedScreen()
                 }
+
+                composable(route = "recover") {
+
+                    RecoverPasswordScreen()
+
+                }
+
+
+
             }
-
-
-
         }
     }
 }
-

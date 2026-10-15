@@ -29,7 +29,7 @@ private val FacebookTextGray = Color(0xFF606770)
 private val FacebookDarkText = Color(0xFF1C1E21)
 
 @Composable
-    fun FacebookLoginScreen(onClickRegister : ()-> Unit, onClickIniciarSesion: ()-> Unit) {
+    fun FacebookLoginScreen(onClickRegister : ()-> Unit, onClickIniciarSesion: ()-> Unit,onClickRecoverPassword: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -104,7 +104,9 @@ private val FacebookDarkText = Color(0xFF1C1E21)
         Spacer(modifier = Modifier.height(20.dp))
 
         // Link "¿Olvidaste tu contraseña?"
-        TextButton(onClick = {}) {
+        TextButton(onClick = {
+            onClickRecoverPassword()
+        }) {
             Text(
                 text = "¿Olvidaste tu contraseña?",
                 color = FacebookTextGray,
